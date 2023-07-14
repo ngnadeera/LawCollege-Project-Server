@@ -36,6 +36,13 @@ router.post("/",validateToken,  async (req, res) => {
       res.status(500).json({ error: error.message || "Failed to create applicant edit request" });
     }
   });
+
+
+  router.get("/:id", validateToken,  async (req, res) => {
+    const id = req.params.id; 
+    const applicant = await Applicant_edit_request.findByPk(id);
+    res.json(applicant);
+})
   
 
 module.exports = router;

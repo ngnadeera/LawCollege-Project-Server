@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
 });
 
 
-router.post("/login", validateToken,  async (req, res) => {
+router.post("/login",  async (req, res) => {
     const { username, password } = req.body;
   
     const user = await Applicant_signup.findOne({ where: {
