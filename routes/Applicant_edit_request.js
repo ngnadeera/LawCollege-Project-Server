@@ -43,6 +43,31 @@ router.post("/",validateToken,  async (req, res) => {
     const applicant = await Applicant_edit_request.findByPk(id);
     res.json(applicant);
 })
+
+router.put("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { EditAccess } = req.body;
+
+    const updatedApplicant = await Applicant_edit_request.update(
+      { EditAccess: EditAccess },
+      { where: { GEApplicantID: id } }
+    );
+
+    if (updatedApplicant[0] === 0) {
+      return res.status(404).json({ error: "Applicant edit request not found" });
+    } else {
+      return res
+        .status(200)
+        .json({ message: "Applicant edit request updated successfully" });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: error.message || "Failed to update applicant edit request" });
+  }
+});
+
   
 
 module.exports = router;
