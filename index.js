@@ -60,6 +60,26 @@ app.use("/Student_login", Student_login);
 const Applicant_edit_request = require("./routes/Applicant_edit_request");
 app.use("/Applicant_edit_request", Applicant_edit_request);
 
+const Entrance_exam_center = require("./routes/Entrance_exam_center");
+app.use("/Entrance_exam_center", Entrance_exam_center);
+
+const Entrance_exam_center_allocation = require("./routes/Entrance_exam_center_allocation");
+app.use("/Entrance_exam_center_allocation", Entrance_exam_center_allocation);
+
+const Entrance_exam_admission = require("./routes/Entrance_exam_admission");
+app.use("/Entrance_exam_admission", Entrance_exam_admission);
+
+const Entrance_exam_date_time = require("./routes/Entrance_exam_date_time");
+app.use("/Entrance_exam_date_time", Entrance_exam_date_time);
+
+const Entrance_exam_results = require("./routes/Entrance_exam_results");
+app.use("/Entrance_exam_results", Entrance_exam_results);
+
+const View_entexmaddmilist = require("./routes/view_entexmaddmilist")
+app.use("/View_entexmaddmilist", View_entexmaddmilist);
+
+
+
 
 
 db.sequelize.sync().then(()=>{

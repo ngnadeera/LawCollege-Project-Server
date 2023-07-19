@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     EditAccess: {
-        type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING(10),
         allowNull: false,
     },
     PaymentDate: {

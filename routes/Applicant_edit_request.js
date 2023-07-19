@@ -24,7 +24,7 @@ router.post("/",validateToken,  async (req, res) => {
       await Applicant_edit_request.create({
         GEApplicantID: applicant.GEApplicantID,
         Username: Username,
-        EditAccess: false,
+        EditAccess: "pending",
         PaymentDate : PaymentDate,
         BankName : BankName,
         PaymentType : PaymentType,
