@@ -13,18 +13,22 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-    const id = req.params.id;
-    try {
-      const ExamResults = await Entrance_exam_results.findByPk(id);
-      if (ExamResults) {
-        res.json(ExamCenter);
-      } else {
-        res.status(404).json({ error: "Record not found" });
-      }
-    } catch (error) {
-      res.status(500).json({ error: "Failed to retrieve the record" });
+  const id = req.params.id;
+  try {
+    const ExamResults = await Entrance_exam_results.findOne({
+      where: { IndexNo: id },
+    });
+
+    if (ExamResults) {
+      res.json(ExamResults);
+    } else {
+      res.json(null);
     }
-  });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve the record" });
+  }
+});
+
 
 
 
