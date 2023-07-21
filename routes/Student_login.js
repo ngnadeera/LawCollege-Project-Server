@@ -4,7 +4,7 @@ const { Student_login, GEA_personal_details } = require("../models");
 const cookieParser = require("cookie-parser");
 const {createToken} = require('../utils/JWT')
 const {validateToken} = require('../middlewares/AuthMiddlewear')
-
+const bcrypt = require("bcrypt");
 
 const generateRandomPassword = () => {
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -82,7 +82,9 @@ router.post("/login", async (req, res) => {
       return res.json({ error: "User Doesn't Exist" });
     }
   
-    if (password === user.password) {
+    const isPasswordMatch = await bcrypt.compare(password, user.password) || password === user.password;
+
+    if (isPasswordMatch) {
 
       const accessToken = createToken(user)
       res.json(accessToken)
@@ -96,6 +98,40 @@ router.post("/login", async (req, res) => {
   router.get('/auth', validateToken , (req,res) => {
     res.json(req.body)
   });
+
+
+
+  router.post("/change-password", validateToken, async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  const username = req.user.username;
+  
+
+console.log("username-----------", username)
+  const user = await Student_login.findOne({
+    where: { username: username }
+  });
+
+  if (!user) {
+    return res.json({ error: "User not found" });
+  }
+
+  const isPasswordMatch = await bcrypt.compare(currentPassword, user.password) || currentPassword == user.password;
+
+  if (!isPasswordMatch) {
+    return res.json({ error: "Current password is incorrect" });
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  await Student_login.update(
+    { password: hashedPassword },
+    { where: { username: username } }
+);
+
+  return res.json({ message: "Password changed successfully" });
+});
+
 
   
 

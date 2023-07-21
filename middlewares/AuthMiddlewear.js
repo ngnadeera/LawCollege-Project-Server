@@ -9,7 +9,8 @@ const validateToken = (req, res, next) => {
     }
 
     try { 
-        const validToken = verify(accessToken,"jwtsecretToken")
+        const validToken = verify(accessToken,"jwtToken")
+        req.user = validToken;
         if (validToken) {
             return next()
         }
