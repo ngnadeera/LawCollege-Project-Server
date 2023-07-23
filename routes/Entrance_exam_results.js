@@ -21,14 +21,21 @@ router.get("/:id", async (req, res) => {
 
     if (ExamResults) {
       res.json(ExamResults);
-    } else {
-      res.json(null);
-    }
+    } 
   } catch (error) {
     res.status(500).json({ error: "Failed to retrieve the record" });
   }
 });
 
+router.post("/", async (req, res) => {
+  const postData = req.body;
+  // try {
+    const createdRecord = await Entrance_exam_results.create(postData);
+    res.json(createdRecord);
+  // } catch (error) {
+  //   res.status(500).json({ error: "Failed to create a record" });
+  // }
+});
 
 
 

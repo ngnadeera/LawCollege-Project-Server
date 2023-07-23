@@ -11,9 +11,7 @@ router.get("/:id", async (req, res) => {
   
       if (user) {
         res.json(user);
-      } else {
-        res.status(404).json({ error: "User not found" });
-      }
+      } 
     } catch (error) {
       console.error("Error retrieving user:", error);
       res.status(500).json({ error: "Error retrieving user" });

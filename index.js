@@ -78,6 +78,9 @@ app.use("/Entrance_exam_results", Entrance_exam_results);
 const View_entexmaddmilist = require("./routes/view_entexmaddmilist")
 app.use("/View_entexmaddmilist", View_entexmaddmilist);
 
+const Notices = require("./routes/Notices");
+app.use("/Notices", Notices);
+
 
 
 

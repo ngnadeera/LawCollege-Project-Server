@@ -29,6 +29,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+router.get("/userId", validateToken, async (req, res) => {
+  try {
+    const username = req.user.username;
+    res.json(username);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 router.post("/", async (req, res) => {
   try {
     const { values } = req.body;
@@ -107,7 +118,6 @@ router.post("/login", async (req, res) => {
   const username = req.user.username;
   
 
-console.log("username-----------", username)
   const user = await Student_login.findOne({
     where: { username: username }
   });
