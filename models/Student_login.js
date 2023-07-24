@@ -1,32 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
     const Student_login = sequelize.define("Student_login", {
-      username: {
-        type: DataTypes.STRING(12),
+      RegNo: {
+        type: DataTypes.STRING(10),
         allowNull: false,
         primaryKey: true,
-        references: {
-          model: "GEA_personal_details",
-          key: "NIC",
-        },
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      StudentID: {
-        type: DataTypes.STRING(10),
-        allowNull: false,
-        references: {
-          model: "GEA_personal_details",
-          key: "GEApplicantID",
-        },
-      },
+      
     });
   
     Student_login.associate = (models) => {
-      Student_login.belongsTo(models.GEA_personal_details, {
-        foreignKey: "Username",
-        targetKey: "Username",
+      Student_login.belongsTo(models.Student_personal_details, {
+        foreignKey: "RegNo",
+        targetKey: "RegNo",
         as: "personalDetails",
         onDelete: "CASCADE",
         onUpdate: "CASCADE",

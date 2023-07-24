@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Student_login, GEA_personal_details } = require("../models");
+const { Student_login, Student_personal_details } = require("../models");
 const cookieParser = require("cookie-parser");
 const {createToken} = require('../utils/JWT')
 const {validateToken} = require('../middlewares/AuthMiddlewear')
@@ -44,24 +44,22 @@ router.post("/", async (req, res) => {
   try {
     const { values } = req.body;
     if (values === "yes") {
-      const personalDetails = await GEA_personal_details.findAll();
+      const personalDetails = await Student_personal_details.findAll();
 
       const existingLogins = await Student_login.findAll({
-        attributes: ["username", "StudentID"],
+        attributes: ["RegNo"],
       });
-      const existingUsernames = existingLogins.map((login) => login.username);
-      const existingStudentIDs = existingLogins.map((login) => login.StudentID);
+      const existingUsernames = existingLogins.map((login) => login.RegNo);
 
       const studentLogins = personalDetails.reduce((logins, detail) => {
-        const { GEApplicantID, NIC } = detail;
+        const { RegNo } = detail;
 
-        if (!existingUsernames.includes(NIC) && !existingStudentIDs.includes(GEApplicantID)) {
+        if (!existingUsernames.includes(RegNo)) {
           const password = generateRandomPassword();
 
           logins.push({
-            username: NIC,
+            RegNo,
             password,
-            StudentID: GEApplicantID,
           });
         }
 
@@ -85,9 +83,9 @@ router.post("/", async (req, res) => {
 
 
 router.post("/login", async (req, res) => {
-    const { username, password } = req.body;
+    const { RegNo, password } = req.body;
   
-    const user = await Student_login.findOne({ where: { username: username } });
+    const user = await Student_login.findOne({ where: { RegNo: RegNo } });
   
     if (!user) {
       return res.json({ error: "User Doesn't Exist" });

@@ -82,6 +82,29 @@ const Notices = require("./routes/Notices");
 app.use("/Notices", Notices);
 
 
+//Internal student's Routes
+
+const Registered_Applicants = require("./routes/Registered_Applicants");
+app.use("/Registered_Applicants", Registered_Applicants)
+
+const Student_personal_details = require("./routes/Student_personal_details");
+app.use("/Student_personal_details", Student_personal_details) 
+
+const Student_al = require("./routes/Student_al")
+app.use("/Student_al", Student_al)
+
+const Student_al_results = require("./routes/Student_al_results")
+app.use("/Student_al_results", Student_al_results)
+
+const Student_ol = require("./routes/Student_ol")
+app.use("/Student_ol", Student_ol)
+
+const Student_other_qulification = require("./routes/Student_other_qulification")
+app.use("/Student_other_qulification", Student_other_qulification)
+
+const Student_convicted = require("./routes/Student_convicted")
+app.use("/Student_convicted", Student_convicted)
+
 
 
 
