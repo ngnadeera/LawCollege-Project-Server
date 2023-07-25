@@ -24,8 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         
       },
       DOB: {
-        type: DataTypes.DATEONLY,
-        
+        type: DataTypes.DATEONLY,    
       },
       ContactNumberMobile: {
         type: DataTypes.STRING(12),
@@ -57,6 +56,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       StartedDate: {
         type: DataTypes.DATEONLY,
+      },
+      Type: {
+        type: DataTypes.BOOLEAN,
       }
     }
   );

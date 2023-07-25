@@ -32,8 +32,8 @@ router.get("/", async (req, res) => {
 
 router.get("/userId", validateToken, async (req, res) => {
   try {
-    const username = req.user.username;
-    res.json(username);
+    const RegNo = req.user.RegNo;
+    res.json(RegNo);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -113,11 +113,11 @@ router.post("/login", async (req, res) => {
   router.post("/change-password", validateToken, async (req, res) => {
   const { currentPassword, newPassword } = req.body;
 
-  const username = req.user.username;
+  const RegNo = req.user.RegNo;
   
 
   const user = await Student_login.findOne({
-    where: { username: username }
+    where: { RegNo: RegNo }
   });
 
   if (!user) {
@@ -134,7 +134,7 @@ router.post("/login", async (req, res) => {
 
   await Student_login.update(
     { password: hashedPassword },
-    { where: { username: username } }
+    { where: { RegNo: RegNo } }
 );
 
   return res.json({ message: "Password changed successfully" });

@@ -105,8 +105,11 @@ app.use("/Student_other_qulification", Student_other_qulification)
 const Student_convicted = require("./routes/Student_convicted")
 app.use("/Student_convicted", Student_convicted)
 
+const Preliminary_Lecture_Regisration = require("./routes/Preliminary_Lecture_Regisration ")
+app.use("/Preliminary_Lecture_Regisration", Preliminary_Lecture_Regisration)
 
-
+const Student_Status = require("./routes/Student_Status")
+app.use("/Student_Status", Student_Status)
 
 db.sequelize.sync().then(()=>{
     app.listen(3001, () => {
