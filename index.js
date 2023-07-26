@@ -108,6 +108,12 @@ app.use("/Student_convicted", Student_convicted)
 const Preliminary_Lecture_Regisration = require("./routes/Preliminary_Lecture_Regisration ")
 app.use("/Preliminary_Lecture_Regisration", Preliminary_Lecture_Regisration)
 
+const Intermidiate_Lecture_Regisration  = require("./routes/Intermidiate_Lecture_Regisration")
+app.use("/Intermidiate_Lecture_Regisration", Intermidiate_Lecture_Regisration )
+
+const Final_Lecture_Regisration = require("./routes/Final_Lecture_Regisration")
+app.use("/Final_Lecture_Regisration", Final_Lecture_Regisration)
+
 const Student_Status = require("./routes/Student_Status")
 app.use("/Student_Status", Student_Status)
 
