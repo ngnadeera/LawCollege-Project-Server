@@ -117,6 +117,25 @@ app.use("/Final_Lecture_Regisration", Final_Lecture_Regisration)
 const Student_Status = require("./routes/Student_Status")
 app.use("/Student_Status", Student_Status)
 
+const Subjects = require("./routes/Subjects")
+app.use("/Subjects", Subjects);
+
+const Preliminary_Exam_Selected_Subjects = require("./routes/Preliminary_Exam_Selected_Subjects")
+app.use("/Preliminary_Exam_Selected_Subjects",Preliminary_Exam_Selected_Subjects);
+
+const Preliminary_Exam_Regisration = require("./routes/Preliminary_Exam_Regisration")
+app.use("/Preliminary_Exam_Regisration",Preliminary_Exam_Regisration);
+
+const Intermidiate_Exam_Regisration = require("./routes/Intermidiate_Exam_Regisration")
+app.use("/Intermidiate_Exam_Regisration",Intermidiate_Exam_Regisration);
+
+const Final_Exam_Regisration = require("./routes/Final_Exam_Regisration")
+app.use("/Final_Exam_Regisration",Final_Exam_Regisration);
+
+const Calling_Exam_Registration = require("./routes/Calling_Exam_Registration")
+app.use("/Calling_Exam_Registration",Calling_Exam_Registration)
+
+
 db.sequelize.sync().then(()=>{
     app.listen(3001, () => {
         console.log("Server Running on Port 3001")
