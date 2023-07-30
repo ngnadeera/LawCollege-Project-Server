@@ -32,25 +32,25 @@ router.post("/", async (req, res) => {
 //   }
 // });
 
-router.put("/:id", validateToken,  async (req, res) => {
-  const id = req.params.id;
-  const updatedData = req.body;
-  try {
-    let payment = await Student_Status.findByPk(id);
+// router.put("/:id", validateToken,  async (req, res) => {
+//   const id = req.params.id;
+//   const updatedData = req.body;
+//   try {
+//     let payment = await Student_Status.findByPk(id);
 
-    if (payment) {
-      // If the record exists, update it
-      await payment.update(updatedData);
-      res.json(payment);
-    } else {
-      // If the record doesn't exist, create a new row with the provided id and updatedData
-      payment = await Student_Status.create({ id, ...updatedData });
-      res.json(payment);
-    }
-  } catch (error) {
-    res.status(500).json({ error: "Failed to update the record" });
-  }
-});
+//     if (payment) {
+//       // If the record exists, update it
+//       await payment.update(updatedData);
+//       res.json(payment);
+//     } else {
+//       // If the record doesn't exist, create a new row with the provided id and updatedData
+//       payment = await Student_Status.create({ id, ...updatedData });
+//       res.json(payment);
+//     }
+//   } catch (error) {
+//     res.status(500).json({ error: "Failed to update the record" });
+//   }
+// });
 
 // router.post("/user", validateToken,  async (req, res) => {
 //   const postData = req.body;
@@ -79,7 +79,7 @@ router.put("/user", validateToken,  async (req, res) => {
       res.json(payment);
     }
   } catch (error) {
-    res.status(500).json({ error: "Failed to update the record" });
+    res.json(error);
   }
 });
 

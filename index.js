@@ -171,6 +171,10 @@ app.use("/Calling_withdrawals",Calling_withdrawals)
 const Exam_Withdrawal = require("./routes/Exam_Withdrawal")
 app.use("/Exam_Withdrawal",Exam_Withdrawal)
 
+const Exam_Medicals = require("./routes//Exam_Medicals")
+app.use("/Exam_Medicals",Exam_Medicals)
+
+
 db.sequelize.sync().then(()=>{
     app.listen(3001, () => {
         console.log("Server Running on Port 3001")
