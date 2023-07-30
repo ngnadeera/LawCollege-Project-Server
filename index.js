@@ -174,6 +174,9 @@ app.use("/Exam_Withdrawal",Exam_Withdrawal)
 const Exam_Medicals = require("./routes//Exam_Medicals")
 app.use("/Exam_Medicals",Exam_Medicals)
 
+const Apprenticeship_registration = require("./routes/Apprenticeship_registration")
+app.use("/Apprenticeship_registration",Apprenticeship_registration)
+
 
 db.sequelize.sync().then(()=>{
     app.listen(3001, () => {
