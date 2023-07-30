@@ -135,6 +135,41 @@ app.use("/Final_Exam_Regisration",Final_Exam_Regisration);
 const Calling_Exam_Registration = require("./routes/Calling_Exam_Registration")
 app.use("/Calling_Exam_Registration",Calling_Exam_Registration)
 
+const Intermidiate_Exam_Selected_Subjects = require("./routes/Intermidiate_Exam_Selected_Subjects")
+app.use("/Intermidiate_Exam_Selected_Subjects",Intermidiate_Exam_Selected_Subjects)
+
+const Preliminary_Exam_IndexNo = require("./routes/Preliminary_Exam_IndexNo")
+app.use("/Preliminary_Exam_IndexNo",Preliminary_Exam_IndexNo)
+
+const Preliminary_exam_admission = require("./routes/Preliminary_exam_admission")
+app.use("/Preliminary_exam_admission",Preliminary_exam_admission)
+
+const Intermidiate_Exam_IndexNo = require("./routes/Intermidiate_Exam_IndexNo")
+app.use("/Intermidiate_Exam_IndexNo",Intermidiate_Exam_IndexNo)
+
+const Intermidiate_exam_admission = require("./routes/Intermidiate_exam_admission")
+app.use("/Intermidiate_exam_admission",Intermidiate_exam_admission)
+
+const Final_exam_IndexNo = require("./routes/Final_exam_IndexNo")
+app.use("/Final_exam_IndexNo",Final_exam_IndexNo)
+
+const Final_exam_admission = require("./routes/Final_exam_admission")
+app.use("/Final_exam_admission",Final_exam_admission)
+
+const Preliminary_exam_results = require("./routes/Preliminary_exam_results")
+app.use("/Preliminary_exam_results",Preliminary_exam_results)
+
+const Intermidiate_exam_results = require("./routes/Intermidiate_exam_results")
+app.use("/Intermidiate_exam_results",Intermidiate_exam_results)
+
+const Final_exam_results = require("./routes/Final_exam_result")
+app.use("/Final_exam_results",Final_exam_results)
+
+const Calling_withdrawals = require("./routes/Calling_withdrawals")
+app.use("/Calling_withdrawals",Calling_withdrawals)
+
+const Exam_Withdrawal = require("./routes/Exam_Withdrawal")
+app.use("/Exam_Withdrawal",Exam_Withdrawal)
 
 db.sequelize.sync().then(()=>{
     app.listen(3001, () => {
