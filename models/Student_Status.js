@@ -34,6 +34,12 @@ module.exports = (sequelize, DataTypes) => {
       FinalAttempts: {
         type: DataTypes.BOOLEAN,
       },
+      ApprenticeshipReg: {
+        type: DataTypes.BOOLEAN,
+      },
+      ApprenticeshipPass: {
+        type: DataTypes.BOOLEAN,
+      },
     },
     {
       timestamps: false,
