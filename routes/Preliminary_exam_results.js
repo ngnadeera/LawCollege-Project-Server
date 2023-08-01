@@ -20,6 +20,15 @@ router.get("/", validateToken, async (req, res) => {
   }
 });
 
+router.get("/results/allusers", validateToken, async (req, res) => {
+  try {
+    const listOfResults = await Preliminary_exam_results.findAll();
+    res.json(listOfResults);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve records" });
+  }
+});
+
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
@@ -31,6 +40,17 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve records" });
   }
 });
+
+router.post("/", validateToken,  async (req, res) => {
+  const postData = req.body;
+
+    const createdRecord = await Preliminary_exam_results.create(postData);
+    res.json(createdRecord);
+
+ 
+
+});
+
 
 // router.post("/upload", upload.single("file"), async (req, res) => {
 //   try {

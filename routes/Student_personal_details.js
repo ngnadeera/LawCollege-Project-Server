@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
     res.json(post);
 });
 
-router.get("/ById",validateToken, async (req, res) => {
+router.get("/:id",validateToken, async (req, res) => {
 
     const id = req.user.RegNo
     console.log("id",id)

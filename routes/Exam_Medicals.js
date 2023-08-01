@@ -28,6 +28,21 @@ router.get("/:id",validateToken, async (req, res) => {
   }
 });
 
+router.get("/user/medical",validateToken, async (req, res) => {
+  const id = req.user.RegNo;
+  try {
+    const ExamResults = await Exam_Medicals.findOne({
+      where: { RegNo: id },
+    });
+
+    if (ExamResults) {
+      res.json(ExamResults);
+    } 
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve the record" }, error);
+  }
+});
+
 router.post("/",validateToken, async (req, res) => {
     const id = req.user.RegNo
 
